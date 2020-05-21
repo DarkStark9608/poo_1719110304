@@ -29,10 +29,9 @@ class CBanco:
   def consultarSaldo(self):
     print("Saldo consultado exitosamente")
     print("Banco: "+self.nombreBanco+"\nNombre del cliente: "+self.nombreCliente+"\nNumero de cliente: "+ str(self.idCuenta)+"\nTipo de cuenta: "+self.tipoCuenta+"\nSaldo: "+str(self.saldo)+"\n \n")
-def Menu():
-  objBanco= CBanco("BBVA","SDFGJ2390TH4-BBVA","Nomina","Oscar",1719110304,8212.12)
-  objBanco.aperturarCuenta()
-  objBanco.cerrarCuenta()
-  objBanco.consultarSaldo()
-  objBanco.editarDatos()
-Menu()
+
+objBanco= CBanco("BBVA","SDFGJ2390TH4-BBVA","Nomina","Oscar",1719110304,8212.12)
+objBanco.aperturarCuenta()
+objBanco.cerrarCuenta()
+objBanco.consultarSaldo()
+objBanco.editarDatos()
