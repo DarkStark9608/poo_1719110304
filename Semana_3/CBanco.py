@@ -30,14 +30,17 @@ class CBanco:
     print("Banco: "+self.nombreBanco+"\nNombre del cliente: "+self.nombreCliente+"\nNumero de cliente: "+ str(self.idCuenta)+"\nTipo de cuenta: "+self.tipoCuenta+"\nSaldo: "+str(self.saldo)+"\n \n")
 
 class CBancomer(CBanco):
+  nombreBanco="Bancomer"
+  rfc="DA32DFBBVA"
+  nombreCliente="David"
+  tipoCuenta="Credito"
+  idCuenta=1719110304
+  saldo=2343.21
+  
   def __init__(self):
-    self.nombreBanco=CBanco.nombreBanco
-    self.rfc=CBanco.rfc
-    self.nombreCliente=CBanco.nombreCliente
-    self.tipoCuenta=CBanco.tipoCuenta
-    self.idCuenta=CBanco.idCuenta
-    self.saldo=CBanco.saldo
-    print("Bancomer")
+    pass
+  def depositarCuenta(self):
+    print("Transferencia exitosa "+ str(self.idCuenta))
 
 objBanco= CBanco("BBVA","SDFGJ2390TH4-BBVA","Nomina","Oscar",1719110304,8212.12)
 objBanco.aperturarCuenta()
@@ -50,3 +53,4 @@ objBancomer.aperturarCuenta()
 objBancomer.cerrarCuenta()
 objBancomer.consultarSaldo()
 objBancomer.editarDatos()
+objBancomer.depositarCuenta()
