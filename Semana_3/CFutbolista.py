@@ -46,8 +46,6 @@ class CFutbolistaJR(CFutbolista):
     print("Futbolista JR")
   def calentar(self):
     print(self.nombreFutbolista+" esta calentando")  
-
-
 objFutbolista=CFutbolista("Oscar","Rodriguez","Marin","Hombre","08-01-1996","Real Madrid",1719110304,24,77,1.70)
 objJr= CFutbolistaJR()
 

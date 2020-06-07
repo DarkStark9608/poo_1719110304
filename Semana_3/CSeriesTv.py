@@ -1,5 +1,4 @@
 class CSerieTv:
-
   nombreSerie=""
   duracion=""
   noCapitulo=0
@@ -9,9 +8,7 @@ class CSerieTv:
   productor=""
   director=""
   audiencia=""
-  televisora=""
-    
-
+  televisora=""  
   def __init__(self,nombreSerie, duracion, noCapitulo, noTemporadas, personajes, genero, productor, director, audiencia, televisora):
     self.nombreSerie=nombreSerie
     self.duracion=duracion
