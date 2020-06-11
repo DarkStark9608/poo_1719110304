@@ -4,7 +4,7 @@ class Palindromo:
   def __init__(self,palabra):
     self.palabra=palabra
     print("La palabra: "+self.palabra)
-    self.palabra=palabra.replace(" ", "")   
+    self.palabra=palabra.replace(" ", "").lower()
 
   def Palindromo(self):
     lista=[]
