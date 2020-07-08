@@ -10,7 +10,7 @@ class CCifradoArchivo:
     cifrarArchivo=""
     cifrarCadena=""
     file= open (archivo, 'r')#Creo mis archivo 
-        for caracter in file: #Utilizo un  for para recorrer mi archivo
+    for caracter in file: #Utilizo un  for para recorrer mi archivo
       cadena+=caracter#Concateno mi archivo en una sola linea
     print("El archivo original es: "+cadena)#Lo imprimo
     for caracter in cadena:#Leemos la cadena
@@ -24,9 +24,10 @@ class CCifradoArchivo:
     descifrarCadena=""
     cadena=""
     file= open (archivo, 'r')#Creo mis archivo 
-        for caracter in file: #Utilizo un  for para recorrer mi archivo
+    for caracter in file: #Utilizo un  for para recorrer mi archivo
       cadena+=caracter#Concateno mi archivo en una sola linea
     print("El archivo original es: "+cadena)#Lo imprimo
+    cifrarCadena=""   
     for caracter in cadena:#Leemos la cadena
       numAlfabeto= ord(caracter) #Obtenemos el caracter del codigo acsii
       cifrarCadena += chr(numAlfabeto -3)#desciframos la cadena
