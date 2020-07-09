@@ -10,7 +10,7 @@ class ArreglosTemperatura:
   def __init__(self):
     pass
 #Creamos el metodo para leer la temperatura y convertirala a fahrenheit
-  def leerTemperatura(self,centigrados):
+  def leerTemperatura(self,centigrados,fecha):
     #Recibimos la temperatura como parametro y la igualamos como propiedad en nuestra clase
     self.centigrados=centigrados
     #Convertimos la temperatura a fahenheit
@@ -37,8 +37,6 @@ class ArreglosTemperatura:
     #Creo un contador
     cont=0
     cont2=0
-    totalc_=0
-    total_f=0.0
     #Creamos y abrimos el archivo en modo de lectura
     file=open(archivo, 'r')
     #leemos el archivo con un for
@@ -48,21 +46,13 @@ class ArreglosTemperatura:
       #Con eso obtendremos el promedio  
       if cont ==0:
           self.promedioCenti=line
-          self.promedioCenti=self.promedioCenti.replace("\n","")
-          self.promedioCenti=int(self.promedioCenti)
-          self.arreglo.append(self.promedioCenti)
+          self.arreglo.append(line)  
           cont+=1
-          totalc_+=self.promedioCenti
     
       elif cont==1:
           self.promedioFare=line
-          self.promedioFare=self.promedioFare.replace("\n","")
-          self.promedioFare=float(self.promedioFare)
-          self.arreglo.append(self.promedioFare)
           cont=0
-          total_f+=self.promedioFare
-          cont2+=1
-        
+    
      
       #Aumentamos nuestro contador conforme el for da un ciclo 
       
@@ -73,20 +63,18 @@ class ArreglosTemperatura:
       #Al terminar de leer los valores se cierra el for 
     file.close()
     #Como son dobles valores se cierra
-    cont2=cont2/2
+    cont=cont/2
     #Calculamos los promedios
     #self.promedioCenti=self.promedioCenti/cont
     #self.promedioFare=self.promedioFare/cont
     #Imprimimos los promedios
     #print("El promedio en fahrenheit es: "+str(self.promedioFare))
     #print("El promedio en celcius es :"+str(self.promedioCenti))
-    print("El promedio centigrados es: "+str(totalc_))
-    print("El promedio fahrenheit es: "+str(total_f))
+    print(self.arreglo)
   
   def imprimir(self):
-      print(self.arreglo)
-    #for row in self.arreglo:
-     # print(row)
+    for row in self.arreglo:
+      print(row)
 
     
 #Menu
@@ -96,11 +84,11 @@ while repetir=="s" or repetir=="S":#Se realizara mientras el usuario diga que si
   
     #Pedimos la temperatura
   temperatura=int(input("Ingresa la temperatura que deseas convertir\n"))  
-  #fecha=input("Ingresa la fecha\n")
+  fecha=input("Ingresa la fecha\n")
   #creamos el objeto
   objtemperatura=ArreglosTemperatura()
   #llamamos nuestros metods
-  objtemperatura.leerTemperatura(temperatura)
+  objtemperatura.leerTemperatura(temperatura,fecha)
   objtemperatura.guardarTemperatura("temperaturas.txt")
 
   
@@ -110,3 +98,6 @@ while repetir=="s" or repetir=="S":#Se realizara mientras el usuario diga que si
   if repetir != "s" and repetir!="S":#Opcion para evaluar si se realizara otra operacion o imprimir las temperaturas
     objtemperatura.leerArchivo("temperaturas.txt")
    # objtemperatura.imprimir()
+
+
+
