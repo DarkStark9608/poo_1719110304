@@ -15,7 +15,7 @@ class ArreglosTemperatura:
     self.centigrados=centigrados
     #Convertimos la temperatura a fahenheit
     self.fahrenheit=(self.centigrados*1.8)+32
-    #self.fecha=fecha
+    
     
 #Metodo para guardar la temperatura
   def guardarTemperatura(self,archivo):
@@ -24,11 +24,10 @@ class ArreglosTemperatura:
     #Convertimos nuestras variables en cadenas para poder darles formato
     self.centigrados=str(self.centigrados)+"\n"
     self.fahrenheit=str(self.fahrenheit)+"\n"
-   # self.fecha=str(self.fecha)+"\n"
+   
     #Guardamos nuestras variables en el archivo
     file.write(str(self.centigrados))
     file.write(str(self.fahrenheit))
-   # file.write(self.fecha)
     #Se cierra el archivo
     file.close()
     
@@ -63,36 +62,19 @@ class ArreglosTemperatura:
           total_f+=self.promedioFare
           cont2+=1
         
-     
       #Aumentamos nuestro contador conforme el for da un ciclo 
-      
-      #variable=[int(self.promedioCenti),float(self.promedioFare)]
-      #<<<<self.arreglo.append(variable)  
-    
-      
+
       #Al terminar de leer los valores se cierra el for 
     file.close()
-    #Como son dobles valores se cierra
+    
     cont2=cont2/2
     #Calculamos los promedios
-    #self.promedioCenti=self.promedioCenti/cont
-    #self.promedioFare=self.promedioFare/cont
-    #Imprimimos los promedios
-    #print("El promedio en fahrenheit es: "+str(self.promedioFare))
-    #print("El promedio en celcius es :"+str(self.promedioCenti))
     print("El promedio centigrados es: "+str(totalc_))
     print("El promedio fahrenheit es: "+str(total_f))
-  
-  def imprimir(self):
-      print(self.arreglo)
-    #for row in self.arreglo:
-     # print(row)
-
-    
+   
 #Menu
 repetir="s"
 while repetir=="s" or repetir=="S":#Se realizara mientras el usuario diga que si
-
   
     #Pedimos la temperatura
   temperatura=int(input("Ingresa la temperatura que deseas convertir\n"))  
@@ -103,10 +85,7 @@ while repetir=="s" or repetir=="S":#Se realizara mientras el usuario diga que si
   objtemperatura.leerTemperatura(temperatura)
   objtemperatura.guardarTemperatura("temperaturas.txt")
 
-  
-  
-  
   repetir=input("Desea repetir s/S:")
   if repetir != "s" and repetir!="S":#Opcion para evaluar si se realizara otra operacion o imprimir las temperaturas
     objtemperatura.leerArchivo("temperaturas.txt")
-   # objtemperatura.imprimir()
+

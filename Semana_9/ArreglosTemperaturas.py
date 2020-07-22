@@ -6,6 +6,7 @@ class ArreglosTemperatura:
   promedioCenti=0
   promedioFare=0
   arreglo=[]
+  fecha=""
   #Creamos un constructor
   def __init__(self):
     pass
@@ -15,72 +16,77 @@ class ArreglosTemperatura:
     self.centigrados=centigrados
     #Convertimos la temperatura a fahenheit
     self.fahrenheit=(self.centigrados*1.8)+32
-    #self.fecha=fecha
-    
+    self.fecha=fecha
+   
 #Metodo para guardar la temperatura
   def guardarTemperatura(self,archivo):
     #recibimos como parametro el archivo txt y lo creamos en modo de escritura 
     file=open(archivo, 'a')
     #Convertimos nuestras variables en cadenas para poder darles formato
-    self.centigrados=str(self.centigrados)+"\n"
-    self.fahrenheit=str(self.fahrenheit)+"\n"
-   # self.fecha=str(self.fecha)+"\n"
+    self.fecha=self.fecha+"\n"
+    variable=str(self.centigrados)+", "+str(self.fahrenheit)+", "+str(self.fecha)
     #Guardamos nuestras variables en el archivo
-    file.write(str(self.centigrados))
-    file.write(str(self.fahrenheit))
-   # file.write(self.fecha)
+    file.write(variable)
     #Se cierra el archivo
     file.close()
     
     #metodo leer archivo
   def leerArchivo(self,archivo):
     #Creo un contador
-    cont=0
-    cont2=0
-    #Creamos y abrimos el archivo en modo de lectura
+   #Creamos y abrimos el archivo en modo de lectura
     file=open(archivo, 'r')
-    #leemos el archivo con un for
-    
+    #leemos el archivo con un for 
     for line in file:
-      #como en el archivo guardamos un valor en una linea y en otro el valor de otro aqui los obtendremos
-      #Con eso obtendremos el promedio  
-      if cont ==0:
-          self.promedioCenti=line
-          self.arreglo.append(line)  
-          cont+=1
-    
-      elif cont==1:
-          self.promedioFare=line
-          cont=0
-    
-     
-      #Aumentamos nuestro contador conforme el for da un ciclo 
-      
-      #variable=[int(self.promedioCenti),float(self.promedioFare)]
-      #<<<<self.arreglo.append(variable)  
-    
-      
-      #Al terminar de leer los valores se cierra el for 
+      #Damos formato para agregar los datos a nuestro arreglo
+      formato=line.replace("\n","")
+    #Lo agregamos al arreglo
+      self.arreglo.append(formato.split(","))
+    #Al terminar de leer el archivo lo cerramos
     file.close()
-    #Como son dobles valores se cierra
-    cont=cont/2
-    #Calculamos los promedios
-    #self.promedioCenti=self.promedioCenti/cont
-    #self.promedioFare=self.promedioFare/cont
-    #Imprimimos los promedios
-    #print("El promedio en fahrenheit es: "+str(self.promedioFare))
-    #print("El promedio en celcius es :"+str(self.promedioCenti))
-    print(self.arreglo)
-  
-  def imprimir(self):
-    for row in self.arreglo:
-      print(row)
+    
+    
+    #definimos un metodo  para obtener los valores maximos en nuestra lista 
+  def valorMaximo(self) :
+      maximo_lista=0
+      #leamos nuestro arreglo en una columna especifica
+      for i in range(len(self.arreglo)):
+        #asignamos el valor de la dicha pocision
+        prueba=self.arreglo[i][0]
+        #le damos formato
+        prueba=int(prueba)
+        #y evaluamos si es mayor que el anterior ingresado
+        if prueba>maximo_lista:
+            maximo_lista=prueba
+            #aca obtenemos el valor de la fila con la temperatura mas alta
+            ind=self.arreglo[i]
+      print("La temperatura mas alta registrada es: ")
 
+      print(ind)
+      #Creamos un metodo para obtener el promedio de las temperaturas
+  def calcularPromedios(self):
+      #leemos el arreglo 
+      cont=0
+      for i in range(len(self.arreglo)):
+          #Obtenemos el valor de la pocicion y lo vamos sumando 
+          prueba=self.arreglo[i][0]
+          prueba=int(prueba)
+          self.promedioCenti+=prueba
+          cont=cont+1
+          #obtnemos el promedio
+      self.promedioCenti=self.promedioCenti/cont
+      print("El promedio en grados centigrados es: "+str(self.promedioCenti))
+      cont2=0
+      for i in range(len(self.arreglo)):
+          prueba=self.arreglo[i][1]
+          prueba=float(prueba)
+          self.promedioFare+=prueba
+          cont2=cont2+1
+      self.promedioFare=self.promedioFare/cont2
+      print("El promedio en grados fahrenheit es: "+str(self.promedioFare))
     
 #Menu
 repetir="s"
 while repetir=="s" or repetir=="S":#Se realizara mientras el usuario diga que si
-
   
     #Pedimos la temperatura
   temperatura=int(input("Ingresa la temperatura que deseas convertir\n"))  
@@ -89,15 +95,12 @@ while repetir=="s" or repetir=="S":#Se realizara mientras el usuario diga que si
   objtemperatura=ArreglosTemperatura()
   #llamamos nuestros metods
   objtemperatura.leerTemperatura(temperatura,fecha)
-  objtemperatura.guardarTemperatura("temperaturas.txt")
+  objtemperatura.guardarTemperatura("temperatura.txt")
 
-  
-  
-  
   repetir=input("Desea repetir s/S:")
   if repetir != "s" and repetir!="S":#Opcion para evaluar si se realizara otra operacion o imprimir las temperaturas
-    objtemperatura.leerArchivo("temperaturas.txt")
-   # objtemperatura.imprimir()
-
-
+    #llamamos nuestros metodos
+    objtemperatura.leerArchivo("temperatura.txt")
+    objtemperatura.valorMaximo()
+    objtemperatura.calcularPromedios()
 
